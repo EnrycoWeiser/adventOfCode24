@@ -21,3 +21,16 @@ for i in range(len(left)):
     sum = sum + ans
 
 print(sum)
+
+####### PART 2 #######
+sum2 = 0
+
+for i in range (len(left)):
+    repeat = right.count(left[i])
+    ans2 = repeat * int(left[i])
+    sum2 = sum2 + ans2
+
+print(sum2)
+
+
+
