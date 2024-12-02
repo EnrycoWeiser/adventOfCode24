@@ -44,11 +44,33 @@ with open('Day2\\input_Day2.txt') as file:
     lines = input.split('\n')
 
 count = 0
+unsafe = []
 
 for l in lines:
     line = l.split(' ')
     if check_order(line):
         count = count + 1
+    else:
+        unsafe.append(line)
     
 
 print(count)
+
+
+####### PART 2 #######
+
+
+count2 = 0
+
+for u in unsafe:
+    print(len(u))
+    for h in range(len(u) - 1):
+        new_u = u
+        print(h)
+        print(new_u)
+        new_u.pop(h)
+        if check_order(new_u):
+            count2 = count2 + 1
+            break
+
+print(count + count2)
