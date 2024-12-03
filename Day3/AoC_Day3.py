@@ -30,11 +30,13 @@ def check_parenthesis(input, num_start):
     if not is_comma:
         return 0
     
+
     # At this point i know there are opening and closing parenthesis and there is also a comma.
     # I just need to see if pre-comma and post-comma chars are all digits.
 
     pre_comma = check_all_digits(input, num_start, comma_index)
     post_comma = check_all_digits(input, (comma_index + 1), closing_index)
+
     return pre_comma * post_comma
 
 
@@ -56,11 +58,21 @@ with open('Day3\\input_Day3.txt') as file:
     input = file.read()
 
 ans = 0
+is_do = True
 
 for c in range(len(input) - 5):
-    if input[c:(c+4)] == 'mul(':
-        ans_molt = check_parenthesis(input, (c+4))
-        ans = ans + ans_molt
+
+    if input[c:(c+7)] == 'don\'t()':
+        is_do = False
+
+    if input[c:(c+4)] == 'do()':
+        is_do = True
+
+    if is_do:
+        if input[c:(c+4)] == 'mul(':
+            ans_molt = check_parenthesis(input, (c+4))
+            ans = ans + ans_molt
         
+            
 print(ans)
 
